@@ -152,9 +152,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\GPRO-FW\GPRO-FW.c" />
+    <ClCompile Include="..\..\..\source\GPRO-FW\gpro_display\gpro_display.c" />
+    <ClCompile Include="..\..\..\source\GPRO-FW\gpro_input\gpro_input.c" />
+    <ClCompile Include="..\..\..\source\GPRO-FW\gpro_logic\gpro_logic.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\GPRO-FW\GPRO-FW.h" />
+    <ClInclude Include="..\..\..\include\GPRO-FW\gpro_display\gpro_display.h" />
+    <ClInclude Include="..\..\..\include\GPRO-FW\gpro_input\gpro_input.h" />
+    <ClInclude Include="..\..\..\include\GPRO-FW\gpro_logic\gpro_logic.h" />
     <ClInclude Include="..\..\..\include\_general\_macros.h" />
     <ClInclude Include="..\..\..\include\_general\_platform.h" />
     <ClInclude Include="..\..\..\include\_general\_typedefs.h" />

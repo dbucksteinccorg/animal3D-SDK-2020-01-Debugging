@@ -4,7 +4,9 @@
 #define _GPRO_FW_H_
 
 
-#include "_general/_typedefs.h"
+#include "gpro_display/gpro_display.h"
+#include "gpro_input/gpro_input.h"
+#include "gpro_logic/gpro_logic.h"
 
 
 #ifdef __cplusplus

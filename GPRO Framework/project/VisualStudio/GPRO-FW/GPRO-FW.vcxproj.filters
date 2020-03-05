@@ -22,10 +22,37 @@
     <Filter Include="Source Files\GPRO-FW">
       <UniqueIdentifier>{182a4c78-3f26-4aec-9cc0-29c5ee71abd0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\GPRO-FW\gpro_display">
+      <UniqueIdentifier>{559bdd0d-c7a7-4a2a-b136-1ca7ee036f16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GPRO-FW\gpro_input">
+      <UniqueIdentifier>{e758fd05-7550-4b52-922d-1b8f495f11cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GPRO-FW\gpro_logic">
+      <UniqueIdentifier>{0808e453-e775-4611-85eb-6f8352e67440}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GPRO-FW\gpro_display">
+      <UniqueIdentifier>{395ade91-6cc1-48f9-942c-15a90972bbed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GPRO-FW\gpro_input">
+      <UniqueIdentifier>{0a664c29-24b2-46e5-b5fe-7a365b942260}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GPRO-FW\gpro_logic">
+      <UniqueIdentifier>{a2141a5b-c96b-45b7-81d4-0b26c7c8c4f0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\GPRO-FW\GPRO-FW.c">
       <Filter>Source Files\GPRO-FW</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\GPRO-FW\gpro_display\gpro_display.c">
+      <Filter>Source Files\GPRO-FW\gpro_display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\GPRO-FW\gpro_input\gpro_input.c">
+      <Filter>Source Files\GPRO-FW\gpro_input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\GPRO-FW\gpro_logic\gpro_logic.c">
+      <Filter>Source Files\GPRO-FW\gpro_logic</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -40,6 +67,15 @@
     </ClInclude>
     <ClInclude Include="..\..\..\include\_general\_macros.h">
       <Filter>Header Files\_general</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\GPRO-FW\gpro_display\gpro_display.h">
+      <Filter>Header Files\GPRO-FW\gpro_display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\GPRO-FW\gpro_input\gpro_input.h">
+      <Filter>Header Files\GPRO-FW\gpro_input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\GPRO-FW\gpro_logic\gpro_logic.h">
+      <Filter>Header Files\GPRO-FW\gpro_logic</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

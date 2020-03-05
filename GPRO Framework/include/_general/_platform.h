@@ -22,4 +22,16 @@
 #endif	// 32-/64-bit
 
 
+// set development platform
+///
+#if (defined _WIN32)	// Windows, MSVC
+#define __PLATFORM				WINDOWS
+#define __COMPILER				MSVC
+
+#else
+#error "ERROR: UNKNOWN/INVALID PLATFORM AND COMPILER"
+
+#endif	// platform
+
+
 #endif	// !__PLATFORM_H_
