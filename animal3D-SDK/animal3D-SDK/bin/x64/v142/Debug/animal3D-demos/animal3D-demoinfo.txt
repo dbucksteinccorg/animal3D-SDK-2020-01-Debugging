@@ -1,0 +1,2 @@
+# animal3D by Dan Buckstein
+@ [animal3D Demo Plugin] [animal3D-DemoPlugin.dll] 8 :a3callback_load a3demoCB_load :a3callback_unload a3demoCB_unload :a3callback_display a3demoCB_display :a3callback_idle a3demoCB_idle :a3callback_windowActivate a3demoCB_windowActivate :a3callback_windowDeactivate a3demoCB_windowDeactivate :a3callback_windowMove a3demoCB_windowMove :a3callback_windowResize a3demoCB_windowResize
