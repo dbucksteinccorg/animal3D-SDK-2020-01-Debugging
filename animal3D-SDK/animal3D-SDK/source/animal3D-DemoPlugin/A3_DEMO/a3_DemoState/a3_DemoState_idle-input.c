@@ -72,8 +72,8 @@ void a3demo_input_main(a3_DemoState *demoState, a3f64 dt)
 				// pitch: vertical tilt
 				elevation,
 				// yaw/roll depends on "vertical" axis: if y, yaw; if z, roll
-				demoState->verticalAxis ? azimuth : a3real_zero,
-				demoState->verticalAxis ? a3real_zero : azimuth);
+				a3real_zero,
+				azimuth);
 		}
 	}
 
@@ -99,8 +99,8 @@ void a3demo_input_main(a3_DemoState *demoState, a3f64 dt)
 				// pitch: vertical tilt
 				elevation,
 				// yaw/roll depends on "vertical" axis: if y, yaw; if z, roll
-				demoState->verticalAxis ? azimuth : a3real_zero,
-				demoState->verticalAxis ? a3real_zero : azimuth);
+				a3real_zero,
+				azimuth);
 		}
 	}
 }

@@ -123,11 +123,11 @@ void a3demo_loadGeometry(a3_DemoState *demoState)
 	} a3_DemoStateLoadedModel;
 
 	// static model transformations
-	static const a3mat4 downscale20x = {
-		+0.05f, 0.0f, 0.0f, 0.0f,
-		0.0f, +0.05f, 0.0f, 0.0f,
-		0.0f, 0.0f, +0.05f, 0.0f,
-		0.0f, 0.0f, 0.0f, +1.0f,
+	static const a3mat4 downscale20x_y2z_x2y = {
+		 0.00f, +0.05f,  0.00f,  0.0f,
+		 0.00f,  0.00f, +0.05f,  0.0f,
+		+0.05f,  0.00f,  0.00f,  0.0f,
+		 0.00f,  0.00f,  0.00f, +1.0f,
 	};
 
 	// pointer to shared vbo/ibo
@@ -192,7 +192,7 @@ void a3demo_loadGeometry(a3_DemoState *demoState)
 		a3_ProceduralGeometryDescriptor hiddenShapes[1] = { a3geomShape_none };
 		a3_ProceduralGeometryDescriptor proceduralShapes[4] = { a3geomShape_none };
 		const a3_DemoStateLoadedModel loadedShapes[1] = {
-			{ A3_DEMO_OBJ"teapot/teapot.obj", downscale20x.mm, a3model_loadTexcoords }
+			{ A3_DEMO_OBJ"teapot/teapot.obj", downscale20x_y2z_x2y.mm, a3model_loadTexcoords }
 		};
 
 		const a3ubyte lightVolumeSlices = 8, lightVolumeStacks = 6;
@@ -344,6 +344,18 @@ void a3demo_loadGeometry(a3_DemoState *demoState)
 // utility to load shaders
 void a3demo_loadShaders(a3_DemoState *demoState)
 {
+	// structure to help with shader management
+	typedef struct a3_TAG_DEMOSTATESHADER
+	{
+		a3_Shader shader[1];
+		a3byte shaderName[32];
+
+		a3_ShaderType shaderType;
+		a3ui32 srcCount;
+		const a3byte* filePath[8];	// max number of source files per shader
+	} a3_DemoStateShader;
+
+
 	// direct to demo programs
 	a3_DemoStateShaderProgram *currentDemoProg;
 	a3i32 *currentUnif, uLocation, flag;

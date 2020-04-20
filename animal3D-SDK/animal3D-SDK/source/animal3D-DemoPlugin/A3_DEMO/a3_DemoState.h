@@ -99,9 +99,6 @@ extern "C"
 		// terminate key pressed
 		a3i32 exitFlag;
 
-		// global vertical axis: Z = 0, Y = 1
-		a3i32 verticalAxis;
-
 		// asset streaming between loads enabled (careful!)
 		a3i32 streaming;
 
@@ -144,19 +141,8 @@ extern "C"
 		a3boolean displaySkybox, displayHiddenVolumes, displayPipeline;
 		a3boolean updateAnimation;
 
-		// grid properties
-		a3mat4 gridTransform;
-		a3vec4 gridColor;
-
 		// cameras
 		a3ui32 activeCamera;
-
-		// animation
-		a3vec3 waypoint[4];
-		a3ui32 segmentCount;
-		a3ui32 segmentIndex;
-		a3real segmentDuration, segmentDurationInv;
-		a3real segmentTime, segmentParam;
 
 
 		//---------------------------------------------------------------------

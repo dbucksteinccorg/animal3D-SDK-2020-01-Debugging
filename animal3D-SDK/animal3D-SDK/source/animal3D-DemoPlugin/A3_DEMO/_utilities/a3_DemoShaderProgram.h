@@ -38,7 +38,6 @@
 extern "C"
 {
 #else	// !__cplusplus
-	typedef struct a3_DemoStateShader			a3_DemoStateShader;
 	typedef struct a3_DemoStateShaderProgram	a3_DemoStateShaderProgram;
 #endif	// __cplusplus
 
@@ -50,18 +49,6 @@ extern "C"
 	{
 		demoStateMaxCount_shaderProgramUniform = 4,
 		demoStateMaxCount_shaderProgramUniformBlock = 1,
-	};
-
-
-	// structure to help with shader management
-	struct a3_DemoStateShader
-	{
-		a3_Shader shader[1];
-		a3byte shaderName[32];
-
-		a3_ShaderType shaderType;
-		a3ui32 srcCount;
-		const a3byte *filePath[8];	// max number of source files per shader
 	};
 
 

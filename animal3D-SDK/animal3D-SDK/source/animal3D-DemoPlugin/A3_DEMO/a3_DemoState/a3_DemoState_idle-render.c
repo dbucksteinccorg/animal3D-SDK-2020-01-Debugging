@@ -328,9 +328,8 @@ void a3demo_render_main(const a3_DemoState *demoState,
 		a3shaderProgramActivate(currentDemoProgram->program);
 		currentDrawable = demoState->draw_grid;
 		modelViewProjectionMat = camera->viewProjectionMat;
-		a3real4x4ConcatL(modelViewProjectionMat.m, demoState->gridTransform.m);
 		a3shaderUniformSendFloatMat(a3unif_mat4, 0, currentDemoProgram->uMVP, 1, modelViewProjectionMat.mm);
-		a3shaderUniformSendFloat(a3unif_vec4, currentDemoProgram->uColor, 1, demoState->gridColor.v);
+		a3shaderUniformSendFloat(a3unif_vec4, currentDemoProgram->uColor, 1, blue);
 		a3vertexDrawableActivateAndRender(currentDrawable);
 	}
 

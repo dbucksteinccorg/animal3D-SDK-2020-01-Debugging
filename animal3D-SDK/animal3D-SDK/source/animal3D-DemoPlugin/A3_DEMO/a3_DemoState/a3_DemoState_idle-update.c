@@ -70,8 +70,6 @@ void a3demo_update_main(a3_DemoState *demoState, a3f64 dt)
 
 	const a3f32 dr = demoState->updateAnimation ? (a3f32)dt * 15.0f : 0.0f;
 
-	const a3i32 useVerticalY = demoState->verticalAxis;
-
 	// model transformations (if needed)
 	const a3mat4 convertY2Z = {
 		+1.0f, 0.0f, 0.0f, 0.0f,
@@ -110,59 +108,14 @@ void a3demo_update_main(a3_DemoState *demoState, a3f64 dt)
 	a3_DemoSceneObject *cameraObject = camera->sceneObject;
 	a3_DemoSceneObject *currentSceneObject;
 
-	a3ui32 segmentIndex[4];
-
 
 	// do simple animation
-	if (useVerticalY)
+	for (i = 0, currentSceneObject = demoState->sphereObject;
+		i < 4; ++i, ++currentSceneObject)
 	{
-		for (i = 0, currentSceneObject = demoState->sphereObject;
-			i < 4; ++i, ++currentSceneObject)
-		{
-			currentSceneObject->euler.y += dr;
-			currentSceneObject->euler.y = a3trigValid_sind(currentSceneObject->euler.y);
-		}
+		currentSceneObject->euler.z += dr;
+		currentSceneObject->euler.z = a3trigValid_sind(currentSceneObject->euler.z);
 	}
-	else
-	{
-		for (i = 0, currentSceneObject = demoState->sphereObject;
-			i < 4; ++i, ++currentSceneObject)
-		{
-			currentSceneObject->euler.z += dr;
-			currentSceneObject->euler.z = a3trigValid_sind(currentSceneObject->euler.z);
-		}
-	}
-
-
-	// animation
-	demoState->segmentTime += (a3real)dt * (a3real)demoState->updateAnimation;
-	if (demoState->segmentTime >= demoState->segmentDuration)
-	{
-		demoState->segmentTime -= demoState->segmentDuration;
-		demoState->segmentIndex = (demoState->segmentIndex + 1) % demoState->segmentCount;
-	}
-	demoState->segmentParam = demoState->segmentTime * demoState->segmentDurationInv;
-
-	segmentIndex[0] = (demoState->segmentIndex + 0) % demoState->segmentCount;
-	segmentIndex[1] = (demoState->segmentIndex + 1) % demoState->segmentCount;
-	segmentIndex[2] = (demoState->segmentIndex + 2) % demoState->segmentCount;
-	segmentIndex[3] = (demoState->segmentIndex + 3) % demoState->segmentCount;
-	a3real3MulS(a3real3NLerp(demoState->sphereObject->position.v,
-		demoState->waypoint[segmentIndex[0]].v,
-		demoState->waypoint[segmentIndex[1]].v,
-		demoState->segmentParam), (a3real)8);
-	a3real3MulS(a3real3NLerp(demoState->cylinderObject->position.v,
-		demoState->waypoint[segmentIndex[1]].v,
-		demoState->waypoint[segmentIndex[2]].v,
-		demoState->segmentParam), (a3real)8);
-	a3real3MulS(a3real3NLerp(demoState->torusObject->position.v,
-		demoState->waypoint[segmentIndex[2]].v,
-		demoState->waypoint[segmentIndex[3]].v,
-		demoState->segmentParam), (a3real)8);
-	a3real3MulS(a3real3NLerp(demoState->teapotObject->position.v,
-		demoState->waypoint[segmentIndex[3]].v,
-		demoState->waypoint[segmentIndex[0]].v,
-		demoState->segmentParam), (a3real)8);
 
 
 	// update scene objects
@@ -176,41 +129,12 @@ void a3demo_update_main(a3_DemoState *demoState, a3f64 dt)
 		a3demo_updateCameraViewProjection(demoState->camera + i);
 
 
-	// apply corrections if required
-	// grid
-	demoState->gridTransform = useVerticalY ? convertZ2Y : a3mat4_identity;
-
 	// skybox position
 	demoState->skyboxObject->modelMat.v3 = camera->sceneObject->modelMat.v3;
 
 
-	// grid lines highlight
-	// if Y axis is up, give it a greenish hue
-	// if Z axis is up, a bit of blue
-	demoState->gridColor = a3vec4_w;
-	if (useVerticalY)
-		demoState->gridColor.g = 0.25f;
-	else
-		demoState->gridColor.b = 0.25f;
-
-
-	// correct rotations as needed
-	if (useVerticalY)
-	{
-		// plane's axis is Z
-		a3real4x4ConcatL(demoState->planeObject->modelMat.m, convertZ2Y.m);
-
-		// sphere's axis is Z
-		a3real4x4ConcatL(demoState->sphereObject->modelMat.m, convertZ2Y.m);
-	}
-	else
-	{
-		// need to rotate skybox if Z-up
-		a3real4x4ConcatL(demoState->skyboxObject->modelMat.m, convertY2Z.m);
-
-		// teapot's axis is Y
-		a3real4x4ConcatL(demoState->teapotObject->modelMat.m, convertY2Z.m);
-	}
+	// need to rotate skybox if Z-up
+	a3real4x4ConcatL(demoState->skyboxObject->modelMat.m, convertY2Z.m);
 
 
 	// apply scales

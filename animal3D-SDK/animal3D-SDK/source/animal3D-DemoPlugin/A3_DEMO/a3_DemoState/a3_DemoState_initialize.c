@@ -46,14 +46,14 @@ void a3demo_initScene(a3_DemoState *demoState)
 	// we want the exact same view in either case
 	const a3real sceneCameraAxisPos = 20.0f;
 	const a3vec3 sceneCameraStartPos = {
-		demoState->verticalAxis ? +sceneCameraAxisPos : +sceneCameraAxisPos,
-		demoState->verticalAxis ? +sceneCameraAxisPos : -sceneCameraAxisPos,
-		demoState->verticalAxis ? +sceneCameraAxisPos : +sceneCameraAxisPos,
+		+sceneCameraAxisPos,
+		-sceneCameraAxisPos,
+		+sceneCameraAxisPos,
 	};
 	const a3vec3 sceneCameraStartEuler = {
-		demoState->verticalAxis ? -35.0f : +55.0f,
-		demoState->verticalAxis ? +45.0f : + 0.0f,
-		demoState->verticalAxis ? + 0.0f : +45.0f,
+		+55.0f,
+		+ 0.0f,
+		+45.0f,
 	};
 
 
@@ -84,17 +84,6 @@ void a3demo_initScene(a3_DemoState *demoState)
 	camera->ctrlZoomSpeed = 5.0f;
 	camera->sceneObject->position = sceneCameraStartPos;
 	camera->sceneObject->euler = sceneCameraStartEuler;
-
-
-	// init transforms
-	if (demoState->verticalAxis)
-	{
-		// vertical axis is Y
-	}
-	else
-	{
-		// vertical axis is Z
-	}
 
 
 	// demo modes
@@ -132,35 +121,12 @@ void a3demo_initScene(a3_DemoState *demoState)
 
 	demoState->sphereObject->position.x = +6.0f;
 	demoState->torusObject->position.x = -6.0f;
-	if (demoState->verticalAxis)
-	{
-		demoState->planeObject->position.y = -2.0f;
-		demoState->sphereObject->position.y = +1.0f;
-		demoState->cylinderObject->position.y = +1.0f;
-		demoState->torusObject->position.y = +1.0f;
-		demoState->cylinderObject->position.z = -6.0f;
-		demoState->teapotObject->position.z = +6.0f;
-	}
-	else
-	{
-		demoState->planeObject->position.z = -2.0f;
-		demoState->sphereObject->position.z = +1.0f;
-		demoState->cylinderObject->position.z = +1.0f;
-		demoState->torusObject->position.z = +1.0f;
-		demoState->cylinderObject->position.y = +6.0f;
-		demoState->teapotObject->position.y = -6.0f;
-	}
-
-
-	// animation
-	demoState->segmentDuration = 4.0f;
-	demoState->segmentDurationInv = a3recip(demoState->segmentDuration);
-	demoState->segmentIndex = 0;
-	demoState->segmentCount = sizeof(demoState->waypoint) / sizeof(*demoState->waypoint);
-	demoState->waypoint[0] = demoState->sphereObject->position;
-	demoState->waypoint[1] = demoState->cylinderObject->position;
-	demoState->waypoint[2] = demoState->torusObject->position;
-	demoState->waypoint[3] = demoState->teapotObject->position;
+	demoState->planeObject->position.z = -2.0f;
+	demoState->sphereObject->position.z = +1.0f;
+	demoState->cylinderObject->position.z = +1.0f;
+	demoState->torusObject->position.z = +1.0f;
+	demoState->cylinderObject->position.y = +6.0f;
+	demoState->teapotObject->position.y = -6.0f;
 }
 
 

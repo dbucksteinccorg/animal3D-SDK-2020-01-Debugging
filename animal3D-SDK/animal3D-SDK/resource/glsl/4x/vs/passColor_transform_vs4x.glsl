@@ -32,7 +32,7 @@
 //	5) assign vertex color input to varying
 
 layout (location = 0) in vec4 aPosition;
-layout (location = 1) in vec4 aColor;	// (3)
+layout (location = 3) in vec4 aColor;	// (3)
 
 uniform mat4 uMVP;	// (1)
 
